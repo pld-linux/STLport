@@ -2,7 +2,7 @@ Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++ 
 Name:		STLport
 Version:	4.0
-Release:	3
+Release:	4
 License:	distributable (see README.gz)
 Group:		Libraries
 Group(de):	Libraries
@@ -64,7 +64,7 @@ CXXFLAGS="%{rpmcflags}" \
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir}}
 
-rm -fr stlport/{BC50,SC5,old_hp,wrap_std}
+rm -fr stlport/{BC50,SC5,old_hp}
 cp -fr stlport $RPM_BUILD_ROOT%{_includedir}
 install lib/*.a $RPM_BUILD_ROOT%{_libdir}
 install lib/*.so $RPM_BUILD_ROOT%{_libdir}

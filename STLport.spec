@@ -84,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/* README
 %{_includedir}/stlport
-#%{_libdir}/*.so
+#%%{_libdir}/*.so
 
 %files static
 %defattr(644,root,root,755)

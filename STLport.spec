@@ -2,8 +2,8 @@ Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++ 
 Name:		STLport
 Version:	4.0
-Release:	2
-Copyright:	Propably OpenSource
+Release:	3
+License:	Propably OpenSource
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
@@ -12,8 +12,8 @@ Group(pl):	Biblioteki
 Source:		http://www.stlport.com/archive/%{name}-%{version}.tar.gz
 Patch0:		%{name}-nodebug.patch
 URL:		http://www.stlport.org/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	gcc-c++
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Implementation of C++ standard library required by OpenOffice.

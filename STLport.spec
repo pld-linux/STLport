@@ -55,12 +55,11 @@ Biblioteki statyczne do STLport.
 
 %build
 cd src
-CXXFLAGS=%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS} \
+CXXFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}" \
 %{__make} -f gcc.mak 
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir}}
 
 rm -fr stlport/{BC50,SC5,config,old_hp,stl,using,wrap_std}

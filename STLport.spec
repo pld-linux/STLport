@@ -3,6 +3,7 @@ Summary(pl):	Pe³na biblioteka standardowa C++
 Name:		STLport
 Version:	4.6
 Release:	0.1
+Epoch:		1
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.gz
@@ -31,7 +32,7 @@ u¿ywana m.in. przez OpenOffice.
 Summary:	STLport heades files, documentation
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do STLport
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 
 %description devel
 Header files and development documentation for STLport.
@@ -43,7 +44,7 @@ Pliki nag³ówkowe i dokumentacja dla STLport.
 Summary:	Static STLport libraries
 Summary(pl):	Biblioteki statyczne do STLport
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}
 
 %description static
 Static STLport libraries.

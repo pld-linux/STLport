@@ -1,3 +1,4 @@
+# TODO: add SONAME to libstlport_gcc.so*
 Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++
 Name:		STLport
@@ -30,7 +31,7 @@ Requires:	%{name} = %{version}
 %description devel
 Header files and development documentation for STLport.
 
-%description -l pl devel
+%description devel -l pl
 Pliki nag³ówkowe i dokumentacja dla STLport.
 
 %package static
@@ -42,7 +43,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Static STLport libraries.
 
-%description -l pl static
+%description static -l pl
 Biblioteki statyczne do STLport.
 
 %prep
@@ -68,21 +69,22 @@ install lib/*.a $RPM_BUILD_ROOT%{_libdir}
 install lib/*.so.* $RPM_BUILD_ROOT%{_libdir}
 ln -sf libstlport_gcc.so.4.5 $RPM_BUILD_ROOT%{_libdir}/libstlport_gcc.so
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/*.so.*.*
+%attr(755,root,root) %{_libdir}/*.so
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/* README
 %{_includedir}/stlport
-%{_libdir}/*.so
+#%{_libdir}/*.so
 
 %files static
 %defattr(644,root,root,755)

@@ -14,7 +14,7 @@ Patch2:		%{name}-4.5.3-gcc3stdexcept.patch
 Patch4:		%{name}-4.5.3-extra-cxxflags.patch
 Patch5:		%{name}-soname.patch
 URL:		http://www.stlport.org/
-BuildRequires:	gcc-c++
+BuildRequires:	libstdc++-devel >= 5:3.3.1
 # rationale: the -gcc3.patch
 %requires_eq	libstdc++
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

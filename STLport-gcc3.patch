@@ -5,8 +5,8 @@
  
  # if (__GNUC__ >= 3)
 +# if (__GNUC_MINOR__ >= 2)
-+# define _STLP_NATIVE_INCLUDE_PATH /usr/include/c++/3.2.1
-+# define _STLP_NATIVE_OLD_STREAMS_INCLUDE_PATH ../c++/3.2.1/backward
++# define _STLP_NATIVE_INCLUDE_PATH /usr/include/c++/3.2.2
++# define _STLP_NATIVE_OLD_STREAMS_INCLUDE_PATH ../c++/3.2.2/backward
 +# else
  
 -#  define _STLP_NATIVE_INCLUDE_PATH ../g++-v3

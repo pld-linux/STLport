@@ -1,9 +1,9 @@
-# TODO: add SONAME to libstlport_gcc.so*
 Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++
 Name:		STLport
 Version:	4.5.3
-Release:	5
+Release:	11
+Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.gz
@@ -13,8 +13,9 @@ Patch1:		%{name}-gcc3.patch
 Patch2:		%{name}-4.5.3-gcc3stdexcept.patch
 #Patch3:		%{name}-4.5.3-nobadlink.patch
 Patch4:		%{name}-4.5.3-extra-cxxflags.patch
+Patch5:		%{name}-soname.patch
 URL:		http://www.stlport.org/
-BuildRequires:	gcc-c++
+BuildRequires:	libstdc++-devel >= 5:3.3.1
 # rationale: the -gcc3.patch
 %requires_eq	libstdc++
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -29,7 +30,7 @@ Implementacja standardowej biblioteki C++ wymaganej przez OpenOffice.
 Summary:	STLport heades files, documentation
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do STLport
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 Header files and development documentation for STLport.
@@ -41,7 +42,7 @@ Pliki nag³ówkowe i dokumentacja dla STLport.
 Summary:	Static STLport libraries
 Summary(pl):	Biblioteki statyczne do STLport
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static STLport libraries.
@@ -56,6 +57,7 @@ Biblioteki statyczne do STLport.
 %patch2 -p1
 #%patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 cd src

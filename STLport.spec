@@ -26,7 +26,7 @@ Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
-Requires:	%{name}-static = %{version}
+Requires:	%{name} = %{version}
 
 %description devel
 Header files and development documentation for STLport.

@@ -5,13 +5,6 @@ Version:	4.5.1
 Release:	1
 License:	distributable (see README.gz)
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.gz
 Patch0:		%{name}-nodebug.patch
 URL:		http://www.stlport.org/
@@ -28,13 +21,6 @@ Implementacja standardowej biblioteki C++ wymaganej przez OpenOffice.
 Summary:	STLport heades files, documentation
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja do STLport
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
@@ -47,13 +33,6 @@ Pliki nagЁСwkowe i dokumentacja dla STLport.
 Summary:	Static STLport libraries
 Summary(pl):	Biblioteki statyczne do STLport
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static

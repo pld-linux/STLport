@@ -9,7 +9,7 @@ Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.gz
 Patch0:		%{name}-nodebug.patch
 Patch1:		%{name}-gcc3.patch
 Patch2:		%{name}-4.5.3-gcc3stdexcept.patch
-Patch3:		%{name}-4.5.3-nobadlink.patch
+#Patch3:		%{name}-4.5.3-nobadlink.patch
 Patch4:		%{name}-4.5.3-extra-cxxflags.patch
 URL:		http://www.stlport.org/
 BuildRequires:	gcc-c++
@@ -49,9 +49,9 @@ Biblioteki statyczne do STLport.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-#%patch2 -p1
+%patch2 -p1
 #%patch3 -p1
-#%patch4 -p1
+%patch4 -p1
 
 %build
 cd src

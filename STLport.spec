@@ -1,18 +1,17 @@
-Summary:	C++ standard library
-Summary(pl):	Biblioteki standardowe C++
+Summary:	Complete C++ standard library
+Summary(pl):	Pe³na biblioteka standardowa C++
 Name:		STLport
-Version:	4.5.3
-Release:	7
+Version:	4.6
+Release:	0.1
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.gz
-# Source0-md5:	cd4dd34b623a8704fbc800de79705171
+# Source0-md5:	e2308d3b410310168397ad20e8517862
 Patch0:		%{name}-nodebug.patch
-Patch1:		%{name}-gcc3.patch
+#Patch1:		%{name}-gcc3.patch
 Patch2:		%{name}-4.5.3-gcc3stdexcept.patch
-#Patch3:		%{name}-4.5.3-nobadlink.patch
-Patch4:		%{name}-4.5.3-extra-cxxflags.patch
-Patch5:		%{name}-soname.patch
+Patch3:		%{name}-4.5.3-extra-cxxflags.patch
+Patch4:		%{name}-soname.patch
 URL:		http://www.stlport.org/
 BuildRequires:	libstdc++-devel >= 5:3.3.1
 # rationale: the -gcc3.patch
@@ -20,10 +19,13 @@ BuildRequires:	libstdc++-devel >= 5:3.3.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Implementation of C++ standard library required by OpenOffice.
+STLport is a multiplatform implementation of C++ Standard Template
+Library based on SGI STL. It's used by e.g. OpenOffice.
 
 %description -l pl
-Implementacja standardowej biblioteki C++ wymaganej przez OpenOffice.
+STLport to wieloplatformowa implementacja standardowej biblioteki
+szablonów (Standard Template Library) C++ oparta na SGI STL. Jest
+u¿ywana m.in. przez OpenOffice.
 
 %package devel
 Summary:	STLport heades files, documentation
@@ -52,11 +54,10 @@ Biblioteki statyczne do STLport.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
+#%patch1 -p1
 %patch2 -p1
-#%patch3 -p1
+%patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
 cd src
@@ -67,11 +68,11 @@ CXXFLAGS="%{rpmcflags}" \
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir}}
 
-rm -fr stlport/{BC50,old_hp}
+rm -fr stlport/{BC50,old_hp,*.orig,*/*.orig,config/new_compiler}
 cp -fr stlport $RPM_BUILD_ROOT%{_includedir}
 install lib/*.a $RPM_BUILD_ROOT%{_libdir}
 install lib/*.so.* $RPM_BUILD_ROOT%{_libdir}
-ln -sf libstlport_gcc.so.4.5 $RPM_BUILD_ROOT%{_libdir}/libstlport_gcc.so
+ln -sf libstlport_gcc.so.4.6 $RPM_BUILD_ROOT%{_libdir}/libstlport_gcc.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -81,12 +82,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc README
 %attr(755,root,root) %{_libdir}/*.so.*.*
 %attr(755,root,root) %{_libdir}/*.so
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/* README
+%doc doc/{images,README.gcc.html,[a-z]*.html}
 %{_includedir}/stlport
 #%%{_libdir}/*.so
 

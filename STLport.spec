@@ -7,6 +7,7 @@ Release:	4
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.gz
+# Source0-md5:	cd4dd34b623a8704fbc800de79705171
 Patch0:		%{name}-nodebug.patch
 Patch1:		%{name}-gcc3.patch
 Patch2:		%{name}-4.5.3-gcc3stdexcept.patch

@@ -55,7 +55,7 @@ Biblioteki statyczne do STLport.
 
 %build
 cd src
-CXXFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}" \
+CXXFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}" \
 %{__make} -f gcc.mak 
 
 %install

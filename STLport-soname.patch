@@ -1,0 +1,12 @@
+diff -Nur STLport-4.5.3.orig/src/gcc.mak STLport-4.5.3.chng/src/gcc.mak
+--- STLport-4.5.3.orig/src/gcc.mak	Tue Jul 29 19:13:28 2003
++++ STLport-4.5.3.chng/src/gcc.mak	Tue Jul 29 19:23:22 2003
+@@ -19,7 +19,7 @@
+ #
+ LINK=ar cr
+ # 2.95 flag
+-DYN_LINK=c++ -pthread -fexceptions -shared -o
++DYN_LINK=c++ -pthread -fexceptions -shared -Wl,-soname,${RELEASE_DYNLIB_SONAME} -o
+ 
+ OBJEXT=o
+ DYNEXT=so

@@ -2,7 +2,7 @@ Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++ 
 Name:		STLport
 Version:	4.5.3
-Release:	1
+Release:	2
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.gz
@@ -60,8 +60,6 @@ install lib/*.a $RPM_BUILD_ROOT%{_libdir}
 install lib/*.so.* $RPM_BUILD_ROOT%{_libdir}
 ln -sf libstlport_gcc.so.4.5 $RPM_BUILD_ROOT%{_libdir}/libstlport_gcc.so
 
-gzip -9nf README
-
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -74,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/* *.gz
+%doc doc/* README
 %{_includedir}/stlport
 %{_libdir}/*.so
 

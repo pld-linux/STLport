@@ -3,7 +3,7 @@ Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++
 Name:		STLport
 Version:	4.5.3
-Release:	3
+Release:	4
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.gz
@@ -14,6 +14,8 @@ Patch2:		%{name}-4.5.3-gcc3stdexcept.patch
 Patch4:		%{name}-4.5.3-extra-cxxflags.patch
 URL:		http://www.stlport.org/
 BuildRequires:	gcc-c++
+# rationale: the -gcc3.patch
+%requires_eq	libstdc++
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

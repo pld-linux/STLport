@@ -60,14 +60,15 @@ Biblioteki statyczne do STLport.
 %patch4 -p1
 
 %build
-cd src
 CXXFLAGS="%{rpmcflags}" \
-%{__make} -f gcc.mak
+%{__make} -C src -f gcc.mak
 
 %install
 rm -rf $RPM_BUILD_ROOT
-cd src
-%{__make} -f gcc.mak INSTALLDIR=$RPM_BUILD_ROOT%{_prefix} install
+
+%{__make} -C src -f gcc.mak install \
+	INSTALLDIR=$RPM_BUILD_ROOT%{_prefix} \
+	INSTALLDIR_LIB=$RPM_BUILD_ROOT%{_libdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT

@@ -6,18 +6,20 @@ Release:	2
 Copyright:	Propably OpenSource
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source:		http://www.stlport.com/archive/%{name}-%{version}.tar.gz
 Patch0:		%{name}-nodebug.patch
 URL:		http://www.stlport.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRequires:	gcc-c++
 
 %description
-Implementation of C++ standard library reqiured by OpenOffice.
+Implementation of C++ standard library required by OpenOffice.
 
 %description -l pl
-Implementacja standradowej biblioteki C++ wymaganej przez OpenOffice.
+Implementacja standardowej biblioteki C++ wymaganej przez OpenOffice.
 
 %package devel
 Summary:	STLport heades files, documentation

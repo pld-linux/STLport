@@ -1,0 +1,351 @@
+diff -Nur STLport-4.0/src/common_macros.mak STLport-4.0.new/src/common_macros.mak
+--- STLport-4.0/src/common_macros.mak	Fri Jul 14 03:53:26 2000
++++ STLport-4.0.new/src/common_macros.mak	Wed Jan 10 20:44:14 2001
+@@ -8,11 +8,7 @@
+ OUTDIR=..$(PATH_SEP)lib
+ 
+ RELEASE_OBJDIR_static=obj$(PATH_SEP)$(COMP)$(PATH_SEP)Release
+-DEBUG_OBJDIR_static=obj$(PATH_SEP)$(COMP)$(PATH_SEP)Debug
+-STLDEBUG_OBJDIR_static=obj$(PATH_SEP)$(COMP)$(PATH_SEP)DebugSTL
+ RELEASE_OBJDIR_dynamic=obj$(PATH_SEP)$(COMP)$(PATH_SEP)ReleaseD
+-DEBUG_OBJDIR_dynamic=obj$(PATH_SEP)$(COMP)$(PATH_SEP)DebugD
+-STLDEBUG_OBJDIR_dynamic=obj$(PATH_SEP)$(COMP)$(PATH_SEP)DebugSTLD
+ 
+ 
+ #
+@@ -21,16 +17,10 @@
+ #
+ 
+ RELEASE_NAME=$(LIB_BASENAME)
+-DEBUG_NAME=$(LIB_BASENAME)_debug
+-STLDEBUG_NAME=$(LIB_BASENAME)_stldebug
+ 
+ RELEASE_DYNLIB=$(RELEASE_NAME).$(DYNEXT)
+-DEBUG_DYNLIB=$(DEBUG_NAME).$(DYNEXT)
+-STLDEBUG_DYNLIB=$(STLDEBUG_NAME).$(DYNEXT)
+ 
+ RELEASE_LIB=$(RELEASE_NAME)$(STATIC_SUFFIX).$(STEXT)
+-DEBUG_LIB=$(DEBUG_NAME)$(STATIC_SUFFIX).$(STEXT)
+-STLDEBUG_LIB=$(STLDEBUG_NAME)$(STATIC_SUFFIX).$(STEXT)
+ 
+ ALL_STATIC_LIBS=$(OUTDIR)$(PATH_SEP)$(RELEASE_LIB) $(OUTDIR)$(PATH_SEP)$(DEBUG_LIB) $(OUTDIR)$(PATH_SEP)$(STLDEBUG_LIB)
+ 
+@@ -100,138 +90,6 @@
+ $(RELEASE_OBJDIR_static)$(PATH_SEP)time_get_w.$(OBJEXT) \
+ $(RELEASE_OBJDIR_static)$(PATH_SEP)time_put_w.$(OBJEXT)
+ 
+-
+-
+-DEBUG_OBJECTS_static= \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)dll_main.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)range_errors.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)string.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)ios_base.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)ios.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)streambuf.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)stdio_streambuf.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)iostream.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)fstream.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)strstream.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)sstream.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)c_locale_stub.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)c_locale.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)codecvt.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)codecvt_byname.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)collate.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)collate_byname.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)complex.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)complex_exp.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)complex_io.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)complex_trig.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)ctype.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)ctype_byname.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)locale.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)locale_catalog.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)locale_impl.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)message_facets.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)monetary.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)money_get.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)money_put.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)moneypunct.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)moneypunct_byname.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)num_get.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)num_get_float.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)num_get_inst.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)num_put.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)num_put_float.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)num_put_inst.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)numpunct.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)numpunct_byname.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)time_facets.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)time_get.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)time_put.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)complex_io_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)ctype_byname_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)fstream_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)codecvt_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)collate_byname_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)collate_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)ctype_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)ios_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)message_facets_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)money_get_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)money_put_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)moneypunct_byname_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)moneypunct_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)num_get_inst_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)num_put_inst_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)numpunct_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)string_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)time_get_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_static)$(PATH_SEP)time_put_w.$(OBJEXT)
+-
+-
+-
+-STLDEBUG_OBJECTS_static= \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)dll_main.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)range_errors.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)string.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)ios_base.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)ios.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)streambuf.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)stdio_streambuf.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)iostream.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)fstream.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)strstream.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)sstream.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)c_locale.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)c_locale_stub.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)codecvt.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)codecvt_byname.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)collate.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)collate_byname.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)complex.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)complex_exp.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)complex_io.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)complex_trig.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)ctype.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)ctype_byname.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)locale.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)locale_catalog.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)locale_impl.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)message_facets.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)monetary.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)money_get.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)money_put.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)moneypunct.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)moneypunct_byname.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)num_get.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)num_get_float.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)num_get_inst.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)num_put.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)num_put_float.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)num_put_inst.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)numpunct.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)numpunct_byname.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)time_facets.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)time_get.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)time_put.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)string_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)complex_io_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)time_get_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)ctype_byname_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)fstream_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)codecvt_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)collate_byname_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)collate_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)ctype_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)ios_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)message_facets_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)money_get_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)money_put_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)moneypunct_byname_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)moneypunct_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)num_get_inst_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)num_put_inst_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)numpunct_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_static)$(PATH_SEP)time_put_w.$(OBJEXT)
+-
+ ###########################################################
+ 
+ RELEASE_OBJECTS_dynamic= \
+@@ -298,137 +156,4 @@
+ $(RELEASE_OBJDIR_dynamic)$(PATH_SEP)time_get_w.$(OBJEXT) \
+ $(RELEASE_OBJDIR_dynamic)$(PATH_SEP)time_put_w.$(OBJEXT) \
+ $(RESFILE)
+-
+-DEBUG_OBJECTS_dynamic= \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)dll_main.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)range_errors.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)string.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)ios_base.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)ios.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)streambuf.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)stdio_streambuf.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)iostream.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)fstream.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)strstream.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)sstream.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)c_locale.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)c_locale_stub.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)codecvt.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)codecvt_byname.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)collate.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)collate_byname.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)complex.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)complex_exp.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)complex_io.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)complex_trig.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)ctype.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)ctype_byname.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)locale.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)locale_catalog.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)locale_impl.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)message_facets.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)monetary.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)money_get.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)money_put.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)moneypunct.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)moneypunct_byname.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)num_get.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)num_get_float.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)num_get_inst.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)num_put.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)num_put_float.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)num_put_inst.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)numpunct.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)numpunct_byname.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)time_facets.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)time_get.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)complex_io_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)time_put.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)ctype_byname_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)fstream_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)codecvt_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)collate_byname_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)collate_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)ctype_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)ios_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)message_facets_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)money_get_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)money_put_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)moneypunct_byname_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)moneypunct_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)num_get_inst_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)num_put_inst_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)numpunct_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)string_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)time_get_w.$(OBJEXT) \
+-$(DEBUG_OBJDIR_dynamic)$(PATH_SEP)time_put_w.$(OBJEXT) \
+-$(RESFILE_debug)
+-
+-
+-STLDEBUG_OBJECTS_dynamic= \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)dll_main.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)range_errors.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)string.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)ios_base.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)ios.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)streambuf.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)stdio_streambuf.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)iostream.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)fstream.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)strstream.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)sstream.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)c_locale.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)c_locale_stub.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)codecvt.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)codecvt_byname.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)collate.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)collate_byname.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)complex.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)complex_exp.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)complex_io.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)complex_trig.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)ctype.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)ctype_byname.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)locale.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)locale_catalog.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)locale_impl.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)message_facets.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)monetary.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)money_get.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)money_put.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)moneypunct.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)moneypunct_byname.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)num_get.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)num_get_float.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)num_get_inst.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)num_put.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)num_put_float.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)num_put_inst.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)numpunct.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)numpunct_byname.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)time_facets.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)time_get.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)time_put.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)complex_io_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)ctype_byname_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)fstream_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)codecvt_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)collate_byname_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)collate_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)ctype_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)ios_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)message_facets_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)money_get_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)money_put_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)moneypunct_byname_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)moneypunct_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)num_get_inst_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)num_put_inst_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)numpunct_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)string_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)time_get_w.$(OBJEXT) \
+-$(STLDEBUG_OBJDIR_dynamic)$(PATH_SEP)time_put_w.$(OBJEXT) \
+-$(RESFILE_stldebug)
+-
+-
+ 
+diff -Nur STLport-4.0/src/common_rules.mak STLport-4.0.new/src/common_rules.mak
+--- STLport-4.0/src/common_rules.mak	Fri Jul 14 03:53:26 2000
++++ STLport-4.0.new/src/common_rules.mak	Wed Jan 10 20:44:48 2001
+@@ -48,17 +48,3 @@
+ 
+ $(OUTDIR)$(PATH_SEP)$(RELEASE_LIB) : $(OUTDIR) $(RELEASE_OBJDIR_static) $(DEF_FILE) $(RELEASE_OBJECTS_static)
+ 	$(LINK) $(LINK_OUT)$(OUTDIR)$(PATH_SEP)$(RELEASE_LIB) $(LDFLAGS_RELEASE_static) $(RELEASE_OBJECTS_static) $(LDLIBS_RELEASE_static)
+-
+-$(OUTDIR)$(PATH_SEP)$(DEBUG_DYNLIB) : $(OUTDIR) $(DEBUG_OBJDIR_dynamic) $(DEF_FILE) $(DEBUG_OBJECTS_dynamic)
+-	$(DYN_LINK) $(DYNLINK_OUT)$(OUTDIR)$(PATH_SEP)$(DEBUG_DYNLIB) $(LDFLAGS_DEBUG_dynamic) $(DEBUG_OBJECTS_dynamic) $(LDLIBS_DEBUG_dynamic) 
+-
+-$(OUTDIR)$(PATH_SEP)$(DEBUG_LIB) : $(OUTDIR) $(DEBUG_OBJDIR_static) $(DEF_FILE) $(DEBUG_OBJECTS_static)
+-	$(LINK) $(LINK_OUT)$(OUTDIR)$(PATH_SEP)$(DEBUG_LIB) $(LDLIBS_DEBUG_static) $(LDFLAGS_DEBUG_static) $(DEBUG_OBJECTS_static)  
+-
+-$(OUTDIR)$(PATH_SEP)$(STLDEBUG_DYNLIB) : $(OUTDIR) $(STLDEBUG_OBJDIR_dynamic) $(DEF_FILE) $(STLDEBUG_OBJECTS_dynamic)
+-	$(DYN_LINK) $(DYNLINK_OUT)$(OUTDIR)$(PATH_SEP)$(STLDEBUG_DYNLIB) $(LDFLAGS_STLDEBUG_dynamic) $(STLDEBUG_OBJECTS_dynamic) $(LDLIBS_STLDEBUG_dynamic)
+-
+-$(OUTDIR)$(PATH_SEP)$(STLDEBUG_LIB) : $(OUTDIR) $(STLDEBUG_OBJDIR_static) $(DEF_FILE) $(STLDEBUG_OBJECTS_static)
+-	$(LINK) $(LINK_OUT)$(OUTDIR)$(PATH_SEP)$(STLDEBUG_LIB) $(LDFLAGS_STLDEBUG_static) $(STLDEBUG_OBJECTS_static)  $(LDLIBS_STLDEBUG_static)
+-
+-#########################################
+\ No newline at end of file
+diff -Nur STLport-4.0/src/gcc.mak STLport-4.0.new/src/gcc.mak
+--- STLport-4.0/src/gcc.mak	Fri Jul 14 03:53:26 2000
++++ STLport-4.0.new/src/gcc.mak	Wed Jan 10 20:44:14 2001
+@@ -37,14 +37,8 @@
+ 
+ CXXFLAGS_COMMON = -I${STLPORT_DIR} ${WARNING_FLAGS}
+ 
+-CXXFLAGS_RELEASE_static = $(CXXFLAGS_COMMON) -O2
+-CXXFLAGS_RELEASE_dynamic = $(CXXFLAGS_COMMON) -O2 -fPIC
+-
+-CXXFLAGS_DEBUG_static = $(CXXFLAGS_COMMON) -g
+-CXXFLAGS_DEBUG_dynamic = $(CXXFLAGS_COMMON) -g -fPIC
+-
+-CXXFLAGS_STLDEBUG_static = $(CXXFLAGS_DEBUG_static) -D__STL_DEBUG
+-CXXFLAGS_STLDEBUG_dynamic = $(CXXFLAGS_DEBUG_dynamic) -D__STL_DEBUG -fPIC
++CXXFLAGS_RELEASE_static = $(CXXFLAGS_COMMON) $(CXXFLAGS)
++CXXFLAGS_RELEASE_dynamic = $(CXXFLAGS_COMMON) $(CXXFLAGS) -fPIC
+ 
+ include common_percent_rules.mak
+ include common_rules.mak

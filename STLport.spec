@@ -1,5 +1,5 @@
 Summary:	C++ standard library
-Summary(pl):	Biblioteki standardowe C++ 
+Summary(pl):	Biblioteki standardowe C++
 Name:		STLport
 Version:	4.5.3
 Release:	3
@@ -56,7 +56,7 @@ Biblioteki statyczne do STLport.
 %build
 cd src
 CXXFLAGS="%{rpmcflags}" \
-%{__make} -f gcc.mak 
+%{__make} -f gcc.mak
 
 %install
 rm -rf $RPM_BUILD_ROOT

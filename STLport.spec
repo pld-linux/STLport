@@ -3,7 +3,7 @@ Summary(pl):	Biblioteki standardowe C++
 Name:		STLport
 Version:	4.0
 Release:	3
-License:	Propably OpenSource
+License:	distributable (see README.gz)
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
@@ -69,6 +69,8 @@ cp -fr stlport $RPM_BUILD_ROOT%{_includedir}
 install lib/*.a $RPM_BUILD_ROOT%{_libdir}
 install lib/*.so $RPM_BUILD_ROOT%{_libdir}
 
+gzip -9nf README TODO ChangeLog
+
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -81,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/*
+%doc doc/* *.gz
 %{_includedir}/stlport
 
 %files static

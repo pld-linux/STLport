@@ -1,13 +1,13 @@
 Summary:	Complete C++ standard library
 Summary(pl):	Pe³na biblioteka standardowa C++
 Name:		STLport
-Version:	4.6
+Version:	4.6.1
 Release:	1
 Epoch:		1
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.gz
-# Source0-md5:	e2308d3b410310168397ad20e8517862
+# Source0-md5:	383cb0e06bb6cebd6c852b478081d54c
 Patch0:		%{name}-nodebug.patch
 #Patch1:		%{name}-gcc3.patch
 Patch2:		%{name}-4.5.3-gcc3stdexcept.patch

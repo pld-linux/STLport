@@ -1,0 +1,19 @@
+--- STLport-4.5.3/stlport/config/stl_gcc.h.old	Fri Oct 18 20:13:00 2002
++++ STLport-4.5.3/stlport/config/stl_gcc.h	Fri Oct 18 20:14:16 2002
+@@ -249,9 +249,14 @@
+ #   endif
+ 
+ # if (__GNUC__ >= 3)
++# if (__GNUC_MINOR__ >= 2)
++# define _STLP_NATIVE_INCLUDE_PATH /usr/include/c++/3.2
++# define _STLP_NATIVE_OLD_STREAMS_INCLUDE_PATH ../c++/3.2/backward
++# else
+ 
+-#  define _STLP_NATIVE_INCLUDE_PATH ../g++-v3
+-#  define _STLP_NATIVE_OLD_STREAMS_INCLUDE_PATH ../g++-v3/backward
++# define _STLP_NATIVE_INCLUDE_PATH ../g++-v3
++# define _STLP_NATIVE_OLD_STREAMS_INCLUDE_PATH ../g++-v3/backward
++# endif
+ 
+ # elif (__GNUC_MINOR__ < 8)
+ 

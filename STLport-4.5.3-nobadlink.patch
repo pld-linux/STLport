@@ -1,0 +1,10 @@
+--- STLport-4.5.3/src/common_rules.mak.nobadlink	2001-10-08 19:30:30.000000000 +0200
++++ STLport-4.5.3/src/common_rules.mak	2002-08-19 15:57:29.000000000 +0200
+@@ -84,7 +84,6 @@ symbolic_links :
+ 	$(RM) $(OUTDIR)/$(STLDEBUG_NAME).$(DYNEXT)
+ 	$(RM) $(OUTDIR)/$(DEBUG_NAME).$(DYNEXT)
+ 	ln -s $(RELEASE_DYNLIB) $(OUTDIR)/$(RELEASE_NAME).$(DYNEXT)
+-	-ln -s $(DEBUG_DYNLIB) $(OUTDIR)/$(DEBUG_NAME).$(DYNEXT)
+ 	ln -s $(STLDEBUG_DYNLIB) $(OUTDIR)/$(STLDEBUG_NAME).$(DYNEXT)
+ 
+ install_unix :

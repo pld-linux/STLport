@@ -66,7 +66,6 @@ CXXFLAGS="%{rpmcflags}" \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-#install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir}}
 cd src
 %{__make} -f gcc.mak INSTALLDIR=$RPM_BUILD_ROOT%{_prefix} install
 

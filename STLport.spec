@@ -2,20 +2,19 @@ Summary:	Complete C++ standard library
 Summary(pl):	Pe³na biblioteka standardowa C++
 Name:		STLport
 Version:	4.6.1
-Release:	1
+Release:	1.1
 Epoch:		1
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.gz
 # Source0-md5:	383cb0e06bb6cebd6c852b478081d54c
 Patch0:		%{name}-nodebug.patch
-#Patch1:		%{name}-gcc3.patch
-Patch2:		%{name}-4.5.3-gcc3stdexcept.patch
-Patch3:		%{name}-4.5.3-extra-cxxflags.patch
-Patch4:		%{name}-soname.patch
+Patch1:		%{name}-soname.patch
+Patch2:		%{name}-gcc34.patch
+Patch3:		%{name}-4.5.3-gcc3stdexcept.patch
+Patch4:		%{name}-4.5.3-extra-cxxflags.patch
 URL:		http://www.stlport.org/
-BuildRequires:	libstdc++-devel >= 5:3.3.1
-# rationale: the -gcc3.patch
+BuildRequires:	libstdc++-devel >= 5:3.4
 %requires_eq	libstdc++
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -55,7 +54,7 @@ Biblioteki statyczne do STLport.
 %prep
 %setup -q
 %patch0 -p1
-#%patch1 -p1
+%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
@@ -67,13 +66,9 @@ CXXFLAGS="%{rpmcflags}" \
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir}}
-
-rm -fr stlport/{BC50,old_hp,*.orig,*/*.orig,config/new_compiler}
-cp -fr stlport $RPM_BUILD_ROOT%{_includedir}
-install lib/*.a $RPM_BUILD_ROOT%{_libdir}
-install lib/*.so.* $RPM_BUILD_ROOT%{_libdir}
-ln -sf libstlport_gcc.so.4.6 $RPM_BUILD_ROOT%{_libdir}/libstlport_gcc.so
+#install -d $RPM_BUILD_ROOT{%{_includedir},%{_libdir}}
+cd src
+%{__make} -f gcc.mak INSTALLDIR=$RPM_BUILD_ROOT%{_prefix} install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -91,7 +86,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/{images,README.gcc.html,[a-z]*.html}
 %{_includedir}/stlport
-#%%{_libdir}/*.so
 
 %files static
 %defattr(644,root,root,755)

@@ -1,4 +1,3 @@
-# TODO: add SONAME to libstlport_gcc.so*
 Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++
 Name:		STLport

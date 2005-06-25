@@ -2,7 +2,7 @@ Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++
 Name:		STLport
 Version:	4.6.2
-Release:	3
+Release:	4
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries

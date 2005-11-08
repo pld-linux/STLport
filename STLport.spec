@@ -6,7 +6,6 @@ Release:	0.1
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
-#Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.bz2
 Source0:	http://dl.sourceforge.net/stlport/%{name}-%{version}.tar.bz2
 # Source0-md5:	5aefcbb0c30a91d50bb2d6c7b30e8393
 Patch0:		%{name}-nodebug.patch
@@ -14,7 +13,7 @@ Patch1:		%{name}-soname.patch
 Patch2:		%{name}-gcc34.patch
 Patch3:		%{name}-4.5.3-gcc3stdexcept.patch
 Patch4:		%{name}-4.5.3-extra-cxxflags.patch
-URL:		http://www.stlport.org/
+URL:		http://stlport.sourceforge.net/
 BuildRequires:	libstdc++-devel >= 5:3.3.2
 %requires_eq	libstdc++
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

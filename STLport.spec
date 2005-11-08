@@ -1,13 +1,13 @@
 Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++
 Name:		STLport
-Version:	4.6.2
-Release:	4
+Version:	5.0.0
+Release:	0.1
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
-Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.gz
-# Source0-md5:	4c01c84f1212369ceb369567ed06d1a2
+Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.bz2
+# Source0-md5:	5aefcbb0c30a91d50bb2d6c7b30e8393
 Patch0:		%{name}-nodebug.patch
 Patch1:		%{name}-soname.patch
 Patch2:		%{name}-gcc34.patch
@@ -52,24 +52,32 @@ Static STLport libraries.
 Biblioteki statyczne do STLport.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%setup -q -n %{name}
+#patch0 -p1
+#patch1 -p1
+#patch2 -p1
+#patch3 -p1
+#patch4 -p1
 
 %build
-%{__make} -C src -f gcc.mak \
+%{__make} -C build/lib -f gcc.mak \
+	release-shared \
+	release-static \
 	CXXFLAGS="%{rpmcxxflags}" \
 	CXX="%{__cxx}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_includedir}
 
-%{__make} -C src -f gcc.mak install \
-	INSTALLDIR=$RPM_BUILD_ROOT%{_prefix} \
-	INSTALLDIR_LIB=$RPM_BUILD_ROOT%{_libdir}
+%{__make} -C build/lib -f gcc.mak \
+	install-release-shared \
+	install-release-static \
+	INSTALL_BIN_DIR=$RPM_BUILD_ROOT%{_bindir} \
+	INSTALL_LIB_DIR=$RPM_BUILD_ROOT%{_libdir}
+
+cp -a stlport $RPM_BUILD_ROOT%{_includedir}
+rm -rf $RPM_BUILD_ROOT%{_includedir}/stlport/BC50
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -85,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/{images,README.gcc.html,[a-z]*.html}
+%doc doc/{FAQ,*.txt}
 %{_includedir}/stlport
 
 %files static

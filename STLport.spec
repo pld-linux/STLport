@@ -6,7 +6,8 @@ Release:	0.1
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
-Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.bz2
+#Source0:	http://www.stlport.com/archive/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/stlport/%{name}-%{version}.tar.bz2
 # Source0-md5:	5aefcbb0c30a91d50bb2d6c7b30e8393
 Patch0:		%{name}-nodebug.patch
 Patch1:		%{name}-soname.patch

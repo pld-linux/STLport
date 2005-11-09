@@ -8,11 +8,12 @@ License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/stlport/%{name}-%{version}.tar.bz2
 # Source0-md5:	5aefcbb0c30a91d50bb2d6c7b30e8393
-Patch0:		%{name}-nodebug.patch
-Patch1:		%{name}-soname.patch
-Patch2:		%{name}-gcc34.patch
-Patch3:		%{name}-4.5.3-gcc3stdexcept.patch
-Patch4:		%{name}-4.5.3-extra-cxxflags.patch
+Patch0:		%{name}-endianness.patch
+#Patch0:		%{name}-nodebug.patch
+#Patch1:		%{name}-soname.patch
+#Patch2:		%{name}-gcc34.patch
+#Patch3:		%{name}-4.5.3-gcc3stdexcept.patch
+#Patch4:		%{name}-4.5.3-extra-cxxflags.patch
 URL:		http://stlport.sourceforge.net/
 BuildRequires:	libstdc++-devel >= 5:3.3.2
 %requires_eq	libstdc++
@@ -53,7 +54,8 @@ Biblioteki statyczne do STLport.
 
 %prep
 %setup -q -n %{name}
-#patch0 -p1
+%patch0 -p1
+
 #patch1 -p1
 #patch2 -p1
 #patch3 -p1

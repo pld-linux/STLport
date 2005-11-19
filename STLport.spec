@@ -52,7 +52,7 @@ Biblioteki statyczne do STLport.
 %setup -q -n %{name}
 %patch0 -p1
 
-sed -i -e 's/^= -O2$/= %{rpmcflags}/' build/Makefiles/gmake/gcc.mak
+sed -i -e 's/= -O2$/= %{rpmcflags}/' build/Makefiles/gmake/gcc.mak
 
 %build
 %{__make} -C build/lib -f gcc.mak \

@@ -2,7 +2,7 @@ Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++
 Name:		STLport
 Version:	5.0.0
-Release:	0.1
+Release:	0.2
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
@@ -83,13 +83,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-%attr(755,root,root) %{_libdir}/*.so.*.*
-%attr(755,root,root) %{_libdir}/*.so
+%attr(755,root,root) %{_libdir}/*.so.*
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{FAQ,*.txt}
 %{_includedir}/stlport
+%attr(755,root,root) %{_libdir}/*.so
 
 %files static
 %defattr(644,root,root,755)

@@ -1,13 +1,13 @@
 Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++
 Name:		STLport
-Version:	5.0.0
-Release:	0.2
+Version:	5.0.1
+Release:	0.1
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/stlport/%{name}-%{version}.tar.bz2
-# Source0-md5:	5aefcbb0c30a91d50bb2d6c7b30e8393
+# Source0-md5:	461cc1b11322568d75e3c0a4a1944cd1
 Patch0:		%{name}-endianness.patch
 URL:		http://stlport.sourceforge.net/
 BuildRequires:	libstdc++-devel >= 5:3.3.2

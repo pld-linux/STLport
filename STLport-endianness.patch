@@ -1,9 +1,9 @@
---- STLport/stlport/stl/_config.h.orig	2005-10-09 17:21:35.000000000 +0200
-+++ STLport/stlport/stl/_config.h	2005-11-09 09:28:38.949726000 +0100
-@@ -161,15 +161,15 @@
+--- STLport/stlport/stl/config/features.h.orig	2005-10-09 17:21:35.000000000 +0200
++++ STLport/stlport/stl/config/features.h	2005-11-09 09:28:38.949726000 +0100
+@@ -173,15 +173,15 @@
+ #endif
  
- 
- #if !defined (_STLP_BIG_ENDIAN) && ! defined (_STLP_LITTLE_ENDIAN)
+ #if !defined (_STLP_BIG_ENDIAN) && !defined (_STLP_LITTLE_ENDIAN)
 -#  if defined (_MIPSEB) || defined (__sparc) || defined (_AIX) || \
 +#  if defined (_MIPSEB) || defined (__sparc__) || defined (_AIX) || \
        defined (__hpux) || defined (macintosh) || defined (_MAC)

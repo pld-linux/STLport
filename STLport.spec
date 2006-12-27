@@ -90,14 +90,17 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-%attr(755,root,root) %{_libdir}/*.so.*
+%attr(755,root,root) %{_libdir}/libstlport.so.*.*.*
+# libstlport.so points to this one instead of soname or real lib name
+# to be fixed if nothing tries to dlopen this one (nothing should!)
+%attr(755,root,root) %{_libdir}/libstlport.so.?
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{FAQ,*.txt}
-%attr(755,root,root) %{_libdir}/*.so
+%attr(755,root,root) %{_libdir}/libstlport.so
 %{_includedir}/stlport
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%{_libdir}/libstlport.a

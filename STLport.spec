@@ -2,7 +2,7 @@ Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++
 Name:		STLport
 Version:	5.1.0
-Release:	1
+Release:	2
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
@@ -77,6 +77,10 @@ install -d $RPM_BUILD_ROOT%{_includedir}
 
 cp -a stlport $RPM_BUILD_ROOT%{_includedir}
 rm -rf $RPM_BUILD_ROOT%{_includedir}/stlport/BC50
+
+# libstlport.so.5 is removed by ldconfig or *something*, so make .so point to real soname
+ln -sf $(cd $RPM_BUILD_ROOT%{_libdir}; echo libstlport.so.*.*.*) \
+	$RPM_BUILD_ROOT%{_libdir}/libstlport.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT

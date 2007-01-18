@@ -1,0 +1,21 @@
+--- STLport/stlport/stl/config/features.h.orig	2005-10-09 17:21:35.000000000 +0200
++++ STLport/stlport/stl/config/features.h	2005-11-09 09:28:38.949726000 +0100
+@@ -173,15 +173,15 @@
+ #endif
+ 
+ #if !defined (_STLP_BIG_ENDIAN) && !defined (_STLP_LITTLE_ENDIAN)
+-#  if defined (_MIPSEB) || defined (__sparc) || defined (_AIX) || \
++#  if defined (_MIPSEB) || defined (__sparc__) || defined (_AIX) || \
+       defined (__hpux) || defined (macintosh) || defined (_MAC)
+ #    define _STLP_BIG_ENDIAN 1
+ #  elif defined (__i386) || defined (_M_IX86) || defined (_M_ARM) || \
+         defined (__amd64__) || defined (_M_AMD64) || defined (__x86_64__) || \
+         defined (__alpha__)
+ #    define _STLP_LITTLE_ENDIAN 1
+-#  elif defined (__ia64__)
+-    /* itanium allows both settings (for instance via gcc -mbig-endian) - hence a seperate check is required */
++#  elif defined (__ia64__) || defined (__powerpc__)
++    /* itanium and powerpc allow both settings (for instance via gcc -mbig-endian) - hence a seperate check is required */
+ #    if defined (__BIG_ENDIAN__)
+ #      define _STLP_BIG_ENDIAN 1
+ #    else

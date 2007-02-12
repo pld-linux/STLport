@@ -1,5 +1,5 @@
 Summary:	C++ standard library
-Summary(pl.UTF-8):   Biblioteki standardowe C++
+Summary(pl.UTF-8):	Biblioteki standardowe C++
 Name:		STLport
 Version:	5.1.0
 Release:	2
@@ -28,7 +28,7 @@ używana m.in. przez OpenOffice.
 
 %package devel
 Summary:	STLport heades files, documentation
-Summary(pl.UTF-8):   Pliki nagłówkowe i dokumentacja do STLport
+Summary(pl.UTF-8):	Pliki nagłówkowe i dokumentacja do STLport
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -40,7 +40,7 @@ Pliki nagłówkowe i dokumentacja dla STLport.
 
 %package static
 Summary:	Static STLport libraries
-Summary(pl.UTF-8):   Biblioteki statyczne do STLport
+Summary(pl.UTF-8):	Biblioteki statyczne do STLport
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 

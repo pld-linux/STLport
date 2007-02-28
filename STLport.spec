@@ -1,8 +1,10 @@
+# TODO
+# - fix ppc build
 Summary:	C++ standard library
 Summary(pl):	Biblioteki standardowe C++
 Name:		STLport
 Version:	5.1.0
-Release:	2
+Release:	3
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
@@ -15,6 +17,8 @@ URL:		http://stlport.sourceforge.net/
 BuildRequires:	libstdc++-devel >= 5:3.3.2
 BuildRequires:	sed >= 4.0
 %requires_eq	libstdc++
+# broken
+ExcludeArch:	ppc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

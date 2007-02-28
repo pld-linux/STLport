@@ -18,7 +18,7 @@ BuildRequires:	libstdc++-devel >= 5:3.3.2
 BuildRequires:	sed >= 4.0
 %requires_eq	libstdc++
 # broken
-ExcludeArch:	ppc
+ExcludeArch:	ppc sparc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

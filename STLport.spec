@@ -12,6 +12,7 @@ Source0:	http://dl.sourceforge.net/stlport/%{name}-%{version}.tar.bz2
 # Source0-md5:	937b114455f304eb1cf7b9cc2ca103a3
 Patch0:		%{name}-endianness.patch
 Patch1:		%{name}-gcc420_dirty_hack.patch
+Patch2:		%{name}-no_vendor_math_l.patch
 URL:		http://stlport.sourceforge.net/
 BuildRequires:	libstdc++-devel >= 5:3.3.2
 BuildRequires:	sed >= 4.0
@@ -55,6 +56,7 @@ Biblioteki statyczne do STLport.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 sed -i -e 's/= -O2$/= %{rpmcflags}/' build/Makefiles/gmake/gcc.mak
 

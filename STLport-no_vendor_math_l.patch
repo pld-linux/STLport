@@ -1,0 +1,12 @@
+diff -ur STLport-5.1.2.orig/stlport/stl/config/_gcc.h STLport-5.1.2/stlport/stl/config/_gcc.h
+--- STLport-5.1.2.orig/stlport/stl/config/_gcc.h	2006-07-22 15:27:46.000000000 +0200
++++ STLport-5.1.2/stlport/stl/config/_gcc.h	2007-03-13 22:39:43.000000000 +0100
+@@ -203,7 +203,7 @@
+ #  endif
+ #endif
+ 
+-#if defined (__alpha__)
++#if defined (__alpha__) || defined (__powerpc__) || defined (__sparc__)
+ #  define _STLP_NO_VENDOR_MATH_L
+ #  define _STLP_NO_IEC559_SUPPORT
+ #endif

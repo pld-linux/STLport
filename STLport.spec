@@ -7,7 +7,7 @@ Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/stlport/%{name}-%{version}.tar.bz2
-# Source0-md5:	3dcdc33b9bd8295a46f3f08557591ea4
+# Source0-md5:	bb6459a6807c77a0363cf0d9c1fe4eb2
 Patch0:		%{name}-endianness.patch
 Patch1:		%{name}-gcc420_dirty_hack.patch
 URL:		http://stlport.sourceforge.net/

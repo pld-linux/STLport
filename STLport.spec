@@ -2,16 +2,15 @@ Summary:	C++ standard library
 Summary(pl.UTF-8):	Biblioteki standardowe C++
 Name:		STLport
 Version:	5.1.3
-Release:	1
+Release:	2
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/stlport/%{name}-%{version}.tar.bz2
 # Source0-md5:	bb6459a6807c77a0363cf0d9c1fe4eb2
 Patch0:		%{name}-endianness.patch
-Patch1:		%{name}-gcc420_dirty_hack.patch
 URL:		http://stlport.sourceforge.net/
-BuildRequires:	libstdc++-devel >= 5:3.3.2
+BuildRequires:	libstdc++-devel >= 6:4.2.0-1
 BuildRequires:	sed >= 4.0
 %requires_eq	libstdc++
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -52,7 +51,6 @@ Biblioteki statyczne do STLport.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 sed -i -e 's/= -O2$/= %{rpmcflags}/' build/Makefiles/gmake/gcc.mak
 

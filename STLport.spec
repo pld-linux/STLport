@@ -9,6 +9,7 @@ Group:		Libraries
 Source0:	http://dl.sourceforge.net/stlport/%{name}-%{version}.tar.bz2
 # Source0-md5:	b8d1cba9fd823e1edbfd83b4bbcb237d
 Patch0:		%{name}-endianness.patch
+Patch1:		%{name}-alpha.patch
 URL:		http://stlport.sourceforge.net/
 BuildRequires:	libstdc++-devel >= 6:4.2.0-1
 BuildRequires:	sed >= 4.0
@@ -51,6 +52,7 @@ Biblioteki statyczne do STLport.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 sed -i -e 's/= -O2$/= %{rpmcflags}/' build/Makefiles/gmake/gcc.mak
 
@@ -74,8 +76,8 @@ install -d $RPM_BUILD_ROOT%{_includedir}
 cp -a stlport $RPM_BUILD_ROOT%{_includedir}
 rm -rf $RPM_BUILD_ROOT%{_includedir}/stlport/BC50
 
-# libstlport.so.5 is removed by ldconfig or *something*, so make .so point to real soname
-ln -sf $(cd $RPM_BUILD_ROOT%{_libdir}; echo libstlport.so.*.*.*) \
+# let libstlport.so point to real lib, not artificial libstlport.so.5 symlink
+ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libstlport.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libdir}/libstlport.so
 
 %clean
@@ -87,10 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-%attr(755,root,root) %{_libdir}/libstlport.so.*.*
-# libstlport.so points to this one instead of soname or real lib name
-# to be fixed if nothing tries to dlopen this one (nothing should!)
-%attr(755,root,root) %{_libdir}/libstlport.so.?
+%attr(755,root,root) %{_libdir}/libstlport.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libstlport.so.?.?
 
 %files devel
 %defattr(644,root,root,755)

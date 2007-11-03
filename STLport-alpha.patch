@@ -1,0 +1,11 @@
+--- STLport-5.1.4/stlport/stl/_cwchar.h.orig	2006-11-13 21:27:25.000000000 +0100
++++ STLport-5.1.4/stlport/stl/_cwchar.h	2007-11-03 22:41:19.435067261 +0100
+@@ -105,7 +105,7 @@
+ #        define WCHAR_MAX ((wchar_t)~0)
+ #      endif
+ #    endif
+-#    if defined (__GNUC__) && defined (__alpha__)
++#    if defined (__GNUC__) && defined (__alpha__) && (__GNUC__ < 3)
+ /* Definition of WCHAR_MIN and MAX are wrong for alpha platform
+  * as gcc consider wchar_t as an unsigned type. Static assertion are
+  * here to check that a future alpha SDK or a future gcc won't change the

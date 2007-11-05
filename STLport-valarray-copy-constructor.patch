@@ -1,0 +1,22 @@
+Make copy constructor public.
+
+based on: http://forums.gentoo.org/viewtopic-p-4120030.html#4120030
+
+--- STLport-5.1.4/stlport/stl/_valarray.h~	2006-04-05 22:34:29.000000000 +0200
++++ STLport-5.1.4/stlport/stl/_valarray.h	2007-11-05 10:11:13.528187997 +0100
+@@ -1193,6 +1193,7 @@
+   }
+ 
+   ~slice_array() {}
++  slice_array(const slice_array&);
+ 
+ private:
+   slice_array(const slice& __slice, valarray<_Tp>& __array)
+@@ -1204,7 +1205,6 @@
+ 
+ private:                        // Disable assignment and default constructor
+   slice_array();
+-  slice_array(const slice_array&);
+   slice_array& operator=(const slice_array&);
+ };
+ 

@@ -2,7 +2,7 @@ Summary:	C++ standard library
 Summary(pl.UTF-8):	Biblioteki standardowe C++
 Name:		STLport
 Version:	5.1.4
-Release:	2
+Release:	3
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
@@ -60,6 +60,8 @@ sed -i -e 's/= -O2$/= %{rpmcflags}/' build/Makefiles/gmake/gcc.mak
 
 %build
 %{__make} -C build/lib -f gcc.mak \
+	stldbg-shared \
+	stldbg-static \
 	release-shared \
 	release-static \
 	CC="%{__cc}" \
@@ -70,17 +72,22 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_includedir}
 
 %{__make} -C build/lib -f gcc.mak \
+	install-stldbg-shared \
+	install-stldbg-static \
 	install-release-shared \
 	install-release-static \
 	INSTALL_BIN_DIR=$RPM_BUILD_ROOT%{_bindir} \
+	INSTALL_LIB_DIR_STLDBG=$RPM_BUILD_ROOT%{_libdir} \
 	INSTALL_LIB_DIR=$RPM_BUILD_ROOT%{_libdir}
 
 cp -a stlport $RPM_BUILD_ROOT%{_includedir}
 rm -rf $RPM_BUILD_ROOT%{_includedir}/stlport/BC50
 
-# let libstlport.so point to real lib, not artificial libstlport.so.5 symlink
+# let libstlport{,stlg}.so point to real lib, not artificial libstlport{,stlg}.so.5 symlink
 ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libstlport.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libdir}/libstlport.so
+ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libstlportstlg.so.*.*.*) \
+	$RPM_BUILD_ROOT%{_libdir}/libstlportstlg.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -88,18 +95,23 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
+%post	-p /sbin/ldconfig devel
+%postun -p /sbin/ldconfig devel
+
 %files
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_libdir}/libstlport.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libstlport.so.?.?
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{FAQ,*.txt}
 %attr(755,root,root) %{_libdir}/libstlport.so
+%attr(755,root,root) %{_libdir}/libstlportstlg.so
+%attr(755,root,root) %{_libdir}/libstlportstlg.so.*.*.*
 %{_includedir}/stlport
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libstlport.a
+%{_libdir}/libstlportstlg.a

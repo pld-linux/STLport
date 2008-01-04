@@ -50,6 +50,43 @@ Static STLport libraries.
 %description static -l pl.UTF-8
 Biblioteki statyczne do STLport.
 
+%package dbg
+Summary:	Debug version of STLport library
+Summary(pl.UTF-8):	Wersja diagnostyczna biblioteki STLport
+Group:		Libraries
+%requires_eq	libstdc++
+
+%description dbg
+Debug version of STLport library.
+
+%description dbg -l pl.UTF-8
+Wersja diagnostyczna biblioteki STLport.
+
+%package dbg-devel
+Summary:	Debug version of STLport library - development files
+Summary(pl.UTF-8):	Wersja diagnostyczna biblioteki STLport - pliki programistyczne
+Group:		Development/Libraries
+Requires:	%{name}-dbg = %{epoch}:%{version}-%{release}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+
+%description dbg-devel
+Debug version of STLport library - development files.
+
+%description dbg-devel -l pl.UTF-8
+Wersja diagnostyczna biblioteki STLport - pliki programistyczne.
+
+%package dbg-static
+Summary:	Static debug version of STLport library
+Summary(pl.UTF-8):	Statyczna wersja diagnostyczna biblioteki STLport
+Group:		Development/Libraries
+Requires:	%{name}-dbg-devel = %{epoch}:%{version}-%{release}
+
+%description dbg-static
+Static debug version of STLport library.
+
+%description dbg-static -l pl.UTF-8
+Statyczna wersja diagnostyczna biblioteki STLport.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -95,23 +132,34 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%post	-p /sbin/ldconfig devel
-%postun -p /sbin/ldconfig devel
+%post	dbg -p /sbin/ldconfig
+%postun dbg -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_libdir}/libstlport.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libstlport.so.5.1
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{FAQ,*.txt}
 %attr(755,root,root) %{_libdir}/libstlport.so
-%attr(755,root,root) %{_libdir}/libstlportstlg.so
-%attr(755,root,root) %{_libdir}/libstlportstlg.so.*.*.*
 %{_includedir}/stlport
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libstlport.a
+
+%files dbg
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libstlportstlg.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libstlportstlg.so.5.1
+
+%files dbg-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libstlportstlg.so
+
+%files dbg-static
+%defattr(644,root,root,755)
 %{_libdir}/libstlportstlg.a

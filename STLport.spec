@@ -11,6 +11,7 @@ Source0:	http://dl.sourceforge.net/stlport/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-endianness.patch
 Patch1:		%{name}-alpha.patch
 Patch2:		%{name}-valarray-copy-constructor.patch
+Patch3:		%{name}-vendor_gcc_detection.patch
 URL:		http://stlport.sourceforge.net/
 BuildRequires:	libstdc++-devel >= 6:4.2.0-1
 BuildRequires:	sed >= 4.0
@@ -92,6 +93,7 @@ Statyczna wersja diagnostyczna biblioteki STLport.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 sed -i -e 's/= -O2$/= %{rpmcflags}/' build/Makefiles/gmake/gcc.mak
 

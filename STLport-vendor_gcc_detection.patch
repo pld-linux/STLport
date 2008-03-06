@@ -1,0 +1,17 @@
+this patch fixes gcc version detection for 4.2/4.3:
+
+version strings:
+gcc (GCC) 4.2.3 20080201 (release) (PLD-Linux)
+gcc (PLD-Linux) 4.3.0
+
+--- STLport-5.1.5/build/Makefiles/gmake/gcc.mak.orig	2008-03-06 20:36:20.000000000 +0100
++++ STLport-5.1.5/build/Makefiles/gmake/gcc.mak	2008-03-06 20:44:19.000000000 +0100
+@@ -26,7 +26,7 @@
+ else
+ 
+ ifneq ($(OSNAME), windows)
+-CXX_VERSION := $(shell ${CXX} --version | grep GCC | awk '{ print $$3; }')
++CXX_VERSION := $(shell ${CXX} --version | grep PLD | awk '{ print $$3; }')
+ 
+ ifeq ($(CXX_VERSION),)
+ # 2.95 report only version

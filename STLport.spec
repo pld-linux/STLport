@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	static_gcc	# linkg libgcc* statically into libstlport.
+#
 Summary:	C++ standard library
 Summary(pl.UTF-8):	Biblioteki standardowe C++
 Name:		STLport
@@ -98,13 +102,19 @@ Statyczna wersja diagnostyczna biblioteki STLport.
 sed -i -e 's/= -O2$/= %{rpmcflags}/' build/Makefiles/gmake/gcc.mak
 
 %build
-%{__make} -C build/lib -f gcc.mak \
+cd build/lib
+
+%{?with_static_gcc:./configure --use-static-gcc}
+
+%{__make} -f gcc.mak \
 	stldbg-shared \
 	stldbg-static \
 	release-shared \
 	release-static \
 	CC="%{__cc}" \
 	CXX="%{__cxx}"
+
+cd ../..
 
 %install
 rm -rf $RPM_BUILD_ROOT

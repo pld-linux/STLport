@@ -19,7 +19,6 @@ Patch3:		%{name}-vendor_gcc_detection.patch
 URL:		http://stlport.sourceforge.net/
 BuildRequires:	libstdc++-devel >= 6:4.2.0-1
 BuildRequires:	sed >= 4.0
-%requires_eq	libstdc++
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,7 +58,6 @@ Biblioteki statyczne do STLport.
 Summary:	Debug version of STLport library
 Summary(pl.UTF-8):	Wersja diagnostyczna biblioteki STLport
 Group:		Libraries
-%requires_eq	libstdc++
 
 %description dbg
 Debug version of STLport library.

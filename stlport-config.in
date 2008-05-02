@@ -43,8 +43,8 @@ while test $# -gt 0; do
       echo $includes
       ;;
     --libs)
-      libdirs=-L@libdir@/lib
-      echo $libdirs -lstlport_gcc -lpthread -lstdc++ -lm 
+      libdirs=-L@libdir@
+      echo $libdirs -lstlport_gcc -lpthread -lstdc++ -lm
       ;;
     *)
       echo "${usage}" 1>&2

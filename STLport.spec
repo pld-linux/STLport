@@ -1,7 +1,7 @@
 # TODO
 # - fix ppc build
 Summary:	C++ standard library
-Summary(pl):	Biblioteki standardowe C++
+Summary(pl.UTF-8):	Biblioteki standardowe C++
 Name:		STLport
 Version:	5.1.2
 Release:	2
@@ -24,33 +24,33 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 STLport is a multiplatform implementation of C++ Standard Template
 Library based on SGI STL. It's used by e.g. OpenOffice.
 
-%description -l pl
+%description -l pl.UTF-8
 STLport to wieloplatformowa implementacja standardowej biblioteki
-szablonÛw (Standard Template Library) C++ oparta na SGI STL. Jest
-uøywana m.in. przez OpenOffice.
+szablon√≥w (Standard Template Library) C++ oparta na SGI STL. Jest
+u≈ºywana m.in. przez OpenOffice.
 
 %package devel
 Summary:	STLport heades files, documentation
-Summary(pl):	Pliki nag≥Ûwkowe i dokumentacja do STLport
+Summary(pl.UTF-8):	Pliki nag≈Ç√≥wkowe i dokumentacja do STLport
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 Header files and development documentation for STLport.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe i dokumentacja dla STLport.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe i dokumentacja dla STLport.
 
 %package static
 Summary:	Static STLport libraries
-Summary(pl):	Biblioteki statyczne do STLport
+Summary(pl.UTF-8):	Biblioteki statyczne do STLport
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static STLport libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne do STLport.
 
 %prep

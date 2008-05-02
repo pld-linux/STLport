@@ -4,7 +4,7 @@ Summary:	C++ standard library
 Summary(pl.UTF-8):	Biblioteki standardowe C++
 Name:		STLport
 Version:	5.1.2
-Release:	3
+Release:	4
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries

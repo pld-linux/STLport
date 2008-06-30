@@ -6,7 +6,7 @@ Summary:	C++ standard library
 Summary(pl.UTF-8):	Biblioteki standardowe C++
 Name:		STLport
 Version:	5.1.5
-Release:	7
+Release:	8
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
@@ -19,6 +19,7 @@ Patch0:		%{name}-endianness.patch
 Patch1:		%{name}-alpha.patch
 Patch2:		%{name}-valarray-copy-constructor.patch
 Patch3:		%{name}-vendor_gcc_detection.patch
+Patch4:		%{name}-fstream.patch
 URL:		http://stlport.sourceforge.net/
 BuildRequires:	libstdc++-devel >= 6:4.2.0-1
 BuildRequires:	sed >= 4.0
@@ -99,6 +100,7 @@ Statyczna wersja diagnostyczna biblioteki STLport.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 sed -i -e 's/= -O2$/= %{rpmcflags}/' build/Makefiles/gmake/gcc.mak
 

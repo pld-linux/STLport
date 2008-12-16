@@ -5,21 +5,18 @@
 Summary:	C++ standard library
 Summary(pl.UTF-8):	Biblioteki standardowe C++
 Name:		STLport
-Version:	5.1.6
+Version:	5.2.1
 Release:	1
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/stlport/%{name}-%{version}.tar.bz2
-# Source0-md5:	1f718b6c8f892927754a6b5c05b4ccc8
+# Source0-md5:	a8341363e44d9d06a60e03215b38ddde
 Source1:	stlport-config.in
 Source2:	stlport.pc.in
 Source3:	stlport-debug.pc.in
 Patch0:		%{name}-endianness.patch
 Patch1:		%{name}-alpha.patch
-Patch2:		%{name}-valarray-copy-constructor.patch
-Patch3:		%{name}-vendor_gcc_detection.patch
-Patch4:		%{name}-fstream.patch
 URL:		http://stlport.sourceforge.net/
 BuildRequires:	libstdc++-devel >= 6:4.2.0-1
 BuildRequires:	sed >= 4.0
@@ -98,9 +95,6 @@ Statyczna wersja diagnostyczna biblioteki STLport.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 sed -i -e 's/= -O2$/= %{rpmcflags}/' build/Makefiles/gmake/gcc.mak
 
@@ -109,19 +103,18 @@ cp -a %{SOURCE2} stlport.pc.in
 cp -a %{SOURCE3} stlport-debug.pc.in
 
 %build
-cd build/lib
+./configure \
+	--prefix=%{_prefix} \
+	--includedir=%{_includedir} \
+	--libdir=%{_libdir} \
+	--with-cc=%{__cc} \
+	--with-cxx=%{__cxx} \
+	--without-debug \
+	--enable-static \
+	%{?with_static_gcc:--use-static-gcc} \
+	--use-compiler-family=gcc
 
-%{?with_static_gcc:./configure --use-static-gcc}
-
-%{__make} -f gcc.mak \
-	stldbg-shared \
-	stldbg-static \
-	release-shared \
-	release-static \
-	CC="%{__cc}" \
-	CXX="%{__cxx}"
-
-cd ../..
+%{__make}
 
 subst='
 	s,@prefix@,%{_prefix},g
@@ -140,24 +133,15 @@ subst='
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_includedir}
 
-%{__make} -C build/lib -f gcc.mak \
-	install-stldbg-shared \
-	install-stldbg-static \
-	install-release-shared \
-	install-release-static \
-	INSTALL_BIN_DIR=$RPM_BUILD_ROOT%{_bindir} \
-	INSTALL_LIB_DIR_STLDBG=$RPM_BUILD_ROOT%{_libdir} \
-	INSTALL_LIB_DIR=$RPM_BUILD_ROOT%{_libdir}
-
-cp -a stlport $RPM_BUILD_ROOT%{_includedir}
-rm -rf $RPM_BUILD_ROOT%{_includedir}/stlport/BC50
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	INSTALL_LIB_DIR_STLDBG=$RPM_BUILD_ROOT%{_libdir}
 
 # let libstlport{,stlg}.so point to real lib, not artificial libstlport{,stlg}.so.5 symlink
 ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libstlport.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libdir}/libstlport.so
 ln -sf $(basename $RPM_BUILD_ROOT%{_libdir}/libstlportstlg.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libdir}/libstlportstlg.so
-
 
 install -d $RPM_BUILD_ROOT{%{_pkgconfigdir},%{_bindir}}
 cp -a stlport.pc $RPM_BUILD_ROOT%{_pkgconfigdir}
@@ -177,7 +161,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_libdir}/libstlport.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libstlport.so.5.1
+%attr(755,root,root) %ghost %{_libdir}/libstlport.so.5.2
 %attr(755,root,root) %ghost %{_libdir}/libstlport.so.5
 
 %files devel
@@ -195,7 +179,7 @@ rm -rf $RPM_BUILD_ROOT
 %files dbg
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libstlportstlg.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libstlportstlg.so.5.1
+%attr(755,root,root) %ghost %{_libdir}/libstlportstlg.so.5.2
 %attr(755,root,root) %ghost %{_libdir}/libstlportstlg.so.5
 
 %files dbg-devel

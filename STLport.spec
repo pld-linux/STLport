@@ -6,7 +6,7 @@ Summary:	C++ standard library
 Summary(pl.UTF-8):	Biblioteki standardowe C++
 Name:		STLport
 Version:	5.2.1
-Release:	1
+Release:	2
 Epoch:		2
 License:	distributable (see README.gz)
 Group:		Libraries
@@ -133,7 +133,7 @@ subst='
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_includedir}
 
-%{__make} install \
+%{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	INSTALL_LIB_DIR_STLDBG=$RPM_BUILD_ROOT%{_libdir}
 
